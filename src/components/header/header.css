@@ -86,7 +86,6 @@ header {
 @media screen and (max-width: 600px) {
   header {
     height: 100vh;
-    /* added after tutorial */
     padding-top: 4rem;
   }
 
@@ -95,7 +94,6 @@ header {
     display: none;
   }
 
-  /* added after tutorial */
   .me {
     width: 94%;
     max-width: 20rem;
@@ -103,7 +101,6 @@ header {
     justify-content: center;
   }
 
-  /* added after tutorial */
   .cta {
     margin-top: 1.7rem;
     gap: 1rem;

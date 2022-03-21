@@ -1,23 +1,44 @@
 import React from 'react'
+import { useState } from 'react'
+import { menu } from './menu'
 import './nav.css'
-import {AiOutlineHome} from 'react-icons/ai'
-import {AiOutlineUser} from 'react-icons/ai'
-import {BiBook} from 'react-icons/bi'
-import {RiServiceLine} from 'react-icons/ri'
-import {BiMessageSquareDetail} from 'react-icons/bi'
-import {useState} from 'react'
 
 const Nav = () => {
-  const [activeNav, setActiveNav] = useState('#')
-  return (
-    <nav>
-      <a href="#" onClick={() => setActiveNav('#')} className={activeNav === '#' ? 'active' : ''}><AiOutlineHome/></a>
-      <a href="#about" onClick={() => setActiveNav('#about')} className={activeNav === '#about' ? 'active' : ''}><AiOutlineUser/></a>
-      <a href="#experience" onClick={() => setActiveNav('#experience')} className={activeNav === '#experience' ? 'active' : ''}><BiBook/></a>
-      {/* <a href="#services" onClick={() => setActiveNav('#services')} className={activeNav === '#services' ? 'active' : ''}><RiServiceLine/></a> */}
-      <a href="#contact" onClick={() => setActiveNav('#contact')} className={activeNav === '#contact' ? 'active' : ''}><BiMessageSquareDetail/></a>
-    </nav>
-  )
+	const [activeNav, setActiveNav] = useState('#');
+
+	const renderMenu = () => {
+		return menu.map(item => {
+			if (item.type === "menu") {
+				return (
+					<a
+						key={item.link}
+						href={item.link} 
+						onClick={() => setActiveNav(item.link)} 
+						className={activeNav === item.link ? 'active' : ''}
+					>
+						{item.icon}
+					</a>
+				)
+			} else {
+				return (
+					<a
+						key={item.link}
+						target="_blank"
+						rel="norefferer"
+						href={item.link}
+					>
+						{item.icon}
+					</a>
+				)
+			}
+		});
+	}
+
+	return (
+		<nav>
+			{renderMenu()}
+		</nav>
+	)
 }
 
 export default Nav
